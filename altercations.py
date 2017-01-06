@@ -94,6 +94,7 @@ def fightBoss(player, boss):
         characters.overseer(player)
     elif boss=='Final Overseer':
         characters.finalOverseer(player)
+    # Alien Overlord is currently in production phase
     #elif boss=='Alien Overlord':
         #alienOverlord(player)
         
