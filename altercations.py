@@ -82,9 +82,9 @@ def counters(player):
         boss='Overseer'
     elif player.get_room_count()==50:
         boss='Final Overseer'
-    #elif player.get_alien_count()==10:
-        #boss='Alien Overlord'
-        #player.reset_alien_count()
+    elif player.get_alien_count()==10:
+        boss='Alien Overlord'
+        player.reset_alien_count()
     else:
         boss=False
     return boss
