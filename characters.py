@@ -556,6 +556,7 @@ def alien(player, status):  # Alien loses to 'Wand'.
         print('You easily thwart his invasion.')
         print('The wand only had one charge unfortunately. It turned to dust!')
         player.lose_item('Wand')
+        player.kill_alien()
         if 'Thief necklace' in player.get_hardInventory():
             input()
             print('The Alien had some items it had gathered for experiments!')
