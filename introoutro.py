@@ -13,7 +13,7 @@ def endgame(player):
     print('\nFinal attributes for '+player.get_name()+'.')
     print('-----------------------------------------------------------')
     print('Inventory: ', end='| ')
-    s=0
+    x=0
     if len(player.get_inventory())>0:
         for item in player.get_inventory():
             x+=1
