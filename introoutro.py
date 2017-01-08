@@ -39,9 +39,7 @@ def endingFile(player):
         inFile.close()
     except IOError:
         savedGames=[]
-    print(savedGames)
     savedGames.append(player)
-    print(savedGames)
     try: # Save the player instance to binary
         outFile=open(filename, 'wb')
         pickle.dump(savedGames, outFile)
