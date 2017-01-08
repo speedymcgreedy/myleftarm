@@ -620,6 +620,7 @@ def alienOverlord(player):
     print('You find yourself aboard a strange spacecraft.')
     print('You have thwarted too many Aliens, the Alien Overlord has come to eliminate you!')
     print('The Alien Overlord reaches for its phaser!')
+    input()
     if 'Amulent' in player.get_inventory() and player.get_attack()>5:
         print('***BOOM***')
         print("Your Amulent gave your bullets magical powers and broke through the Overlord's barrier!")
@@ -633,7 +634,7 @@ def alienOverlord(player):
             player.lose_hard_item('Infection')
         for x in range(10):
             player.gain_health()
-        print("You feel much better and use the teleported to return."
+        print("You feel much better and use the teleported to return.")
         input()
     elif player.get_attack()>5:
         print('***BOOM***')
