@@ -71,7 +71,7 @@ class Character():
             self.__armor=0
 
     def reset_alien_count(self):
-        self.__alien_count=0
+        self.__alien_count=5
 
     def lose_health(self):
         self.__health-=1

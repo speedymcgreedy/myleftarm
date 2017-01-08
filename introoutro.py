@@ -13,7 +13,7 @@ def endgame(player):
     print('\nFinal attributes for '+player.get_name()+'.')
     print('-----------------------------------------------------------')
     print('Inventory: ', end='| ')
-    s=0
+    x=0
     if len(player.get_inventory())>0:
         for item in player.get_inventory():
             x+=1
@@ -39,9 +39,7 @@ def endingFile(player):
         inFile.close()
     except IOError:
         savedGames=[]
-    print(savedGames)
     savedGames.append(player)
-    print(savedGames)
     try: # Save the player instance to binary
         outFile=open(filename, 'wb')
         pickle.dump(savedGames, outFile)

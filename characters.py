@@ -405,9 +405,9 @@ def magician(player, status):
             print('You decided there is too much action going on and leave the room.')
     else:
         print('The victim was a Magician, and is thankful for your help.')
-        print('She gives you a Wand to fight off any Alien you may encounter!')
+        print('She gives you a mysterious Amulent!')
         input()
-        interactions.evaluateItem('Wand', player)
+        interactions.evaluateItem('Amulent', player)
     input()
     return win
 
@@ -556,6 +556,7 @@ def alien(player, status):  # Alien loses to 'Wand'.
         print('You easily thwart his invasion.')
         print('The wand only had one charge unfortunately. It turned to dust!')
         player.lose_item('Wand')
+        player.kill_alien()
         if 'Thief necklace' in player.get_hardInventory():
             input()
             print('The Alien had some items it had gathered for experiments!')
@@ -619,8 +620,35 @@ def alienOverlord(player):
     print('You find yourself aboard a strange spacecraft.')
     print('You have thwarted too many Aliens, the Alien Overlord has come to eliminate you!')
     print('The Alien Overlord reaches for its phaser!')
-    print('You point your wand at it and fire.')
-    if 'Amulent' in player.get_inventory():
-        print('***ZAP***')
-        print('The combined might of your Wand and Amulent disentigrates it!')
-        print('You')
+    input()
+    if 'Amulent' in player.get_inventory() and player.get_attack()>5:
+        print('***BOOM***')
+        print("Your Amulent gave your bullets magical powers and broke through the Overlord's barrier!")
+        print('Direct Hit!')
+        input()
+        print("Before returning to Earth, you notice a healing tank aboard the room.")
+        print("You use the tank to heal your wounds!")
+        input()
+        if "Infection" in player.get_hardInventory():
+            print("The tank has healed your vision! The Infection is gone.")
+            player.lose_hard_item('Infection')
+        for x in range(10):
+            player.gain_health()
+        print("You feel much better and use the teleported to return.")
+        input()
+    elif player.get_attack()>5:
+        print('***BOOM***')
+        print("You bullets bounce off of the Overlord's barrier...")
+        input()
+        print("He smirks and zaps you with his phaser.")
+        print('***Zap***')
+        print('You are now a pile of dust.')
+        introoutro.endgame(player)
+    else:
+        if 'Old gun' in player.get_inventory():
+            print('The Old gun jammed!')
+        print("You have no chance against the Overlord with your current weapon!")
+        input()
+        print('***Zap***')
+        print('You are now a pile of dust.')
+        introoutro.endgame(player)
