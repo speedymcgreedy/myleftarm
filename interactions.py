@@ -12,22 +12,27 @@ ITEM=['Lamp', 'Broom', 'Pocket knife', 'Machete', 'Alcohol', 'Medicine', 'Oil', 
 def chooseItem(player, items):
     if len(items)>0: # If there are items in the room.
         # Display the items in the room.
-        print('You can see the following items lying in the room: \n', end='| ')
-        for item in items:
-            print(item, end=' | ')
+        print('You can see the following items lying in the room:')
         # Player can choose 1 item.
-        input('\n')
-        print('Which item would you like to pick up? There is only time to get one.')
-        print('(Hit enter to leave the items)')
-        playerItem=input('ITEM: ')
+        num=len(items)
+        for x in range(num):
+            y=x+1
+            print(y, ') ', sep='', end='')
+            print(items[x])
+        input('')
+        print('Enter the number of the item you would like to pick up.')
+        print('There is only time to get one! (Hit enter to leave the items)')
+        playerItem=input('ITEM Number: ')
         print()
-        if playerItem=='': # If player inputs nothing.
+        if playerItem.isdigit()==True: # If player inputs integer.
+            index=int(playerItem)-1 # Desired index is input-1
+            if index>=0 and index<=num: # if index 0:len(items)
+                pickupItem=items[index]
+                evaluateItem(pickupItem, player)
+            else:
+                print('No item was retrieved.')
+        else:
             print('No item was retrieved.')
-        else: # If player inputs something
-            if playerItem in items: # If input in the list of room items.
-                evaluateItem(playerItem, player)
-            else: # If input was mispelled or not in the list, player gets nothing.
-                print(playerItem, 'was not an option.\nNo item was retrieved.')
         input()
     player.reset() # Update the player's stats with the new item.
 
@@ -36,21 +41,26 @@ def exploreFurniture(player, furniture):
     if len(furniture)>0: # If the room contains furniture.
         # Display the rooms furniture.
         print('The room has furniture in it that you can interact with.')
-        print('| ', end='')
-        for item in furniture:
-            print(item, end=' | ')
-        input('\n')
+        num=len(furniture)
+        for x in range(num):
+            y=x+1
+            print(y, ') ', sep='', end='')
+            print(furniture[x])
+        input('')
         # Player can choose 1 to interact with.
+        print('Enter the item of the furniture you would like to explore.')
         print('You can explore one of these, or press "Enter" to leave the room.')
         playerExplore=input('EXPLORE: ')
-        if playerExplore=='': # If player inputs nothing
-            print('\nNothing was explored.')
+        if playerExplore.isdigit()==True: # If player inputs integer.
+            index=int(playerExplore)-1 # Desired index is input-1
+            if index>=0 and index<=num: # if index 0:len(items)
+                explore=furniture[index]
+                print()
+                loadFurniture(player, explore)
+            else:
+                print('Nothing was explored.')
         else:
-            print()
-            if playerExplore in furniture: # If the input was in the room, load the furniture.
-                loadFurniture(player, playerExplore)
-            else: # If input was mispelled or not in the list, player explores nothing.
-                print(playerExplore, 'was not an option.\nNothing was explored.')
+            print('Nothing was explored.')
     input()
 
 # loadFurniture contains all the interactions the player can have with the furniture in a room.      
