@@ -529,8 +529,6 @@ def bear(player, status): # Bear mauls and maybe handless. 6 Atk
                     print('***swipe***')
                     player.lose_health()
                     time.sleep(0.5)
-                    if hands==2: # 10% chance to lose clothing life.
-                        player.lose_armor()
             else:
                 print('***swipe***')
                 player.lose_health()
