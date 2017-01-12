@@ -1,5 +1,5 @@
-# altercations module.
-
+# altercat module.
+ dfdfd
 import random, time
 import character
 import interactions, characters
